@@ -4,12 +4,13 @@ from .context import bh
 from bh.util.data import Dealer
 from bh.util.data import Card
 from bh.util.data import Deck
+from bh.util.data import Game
 
 from unittest import TestCase
 
 
 class DealerTestSuite(TestCase):
-    """Advanced test cases."""
+    """Dealer  test cases."""
 
     def test_deck(self):
         deck = Deck()
@@ -31,3 +32,9 @@ class DealerTestSuite(TestCase):
         card_set.append(dealer.dealCard())
         card_set.append(dealer.dealCard())
         print(dealer.get_total(card_set))
+
+
+class GameTestSuite(TestCase):
+
+    def test_play(self):
+        game = Game()
