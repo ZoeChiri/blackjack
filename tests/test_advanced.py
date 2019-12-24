@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 
+
 from .context import bh
 from bh.util.data import Dealer
 from bh.util.data import Card
 from bh.util.data import Deck
 from bh.util.data import Game
+from bh.util.data import GamePlay
 
 from unittest import TestCase
+
+import io
+import sys
 
 
 class DealerTestSuite(TestCase):
@@ -36,5 +41,12 @@ class DealerTestSuite(TestCase):
 
 class GameTestSuite(TestCase):
 
-    def test_play(self):
+    def test_hit_or_stand(self):
+        captured_input = io.StringIO('stand')
+        sys.stdin = captured_input
         game = Game()
+        self.assertFalse(game.hit_or_stand())
+
+        captured_input = io.StringIO('hit')
+        sys.stdin = captured_input
+        self.assertTrue(game.hit_or_stand())
